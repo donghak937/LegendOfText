@@ -1,0 +1,15 @@
+C:\Users\dongh\CSharpGame\bin\Debug\net7.0\CSharpGame.exe
+C:\Users\dongh\CSharpGame\bin\Debug\net7.0\CSharpGame.deps.json
+C:\Users\dongh\CSharpGame\bin\Debug\net7.0\CSharpGame.runtimeconfig.json
+C:\Users\dongh\CSharpGame\bin\Debug\net7.0\CSharpGame.dll
+C:\Users\dongh\CSharpGame\bin\Debug\net7.0\CSharpGame.pdb
+C:\Users\dongh\CSharpGame\obj\Debug\net7.0\CSharpGame.csproj.AssemblyReference.cache
+C:\Users\dongh\CSharpGame\obj\Debug\net7.0\CSharpGame.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\dongh\CSharpGame\obj\Debug\net7.0\CSharpGame.AssemblyInfoInputs.cache
+C:\Users\dongh\CSharpGame\obj\Debug\net7.0\CSharpGame.AssemblyInfo.cs
+C:\Users\dongh\CSharpGame\obj\Debug\net7.0\CSharpGame.csproj.CoreCompileInputs.cache
+C:\Users\dongh\CSharpGame\obj\Debug\net7.0\CSharpGame.dll
+C:\Users\dongh\CSharpGame\obj\Debug\net7.0\refint\CSharpGame.dll
+C:\Users\dongh\CSharpGame\obj\Debug\net7.0\CSharpGame.pdb
+C:\Users\dongh\CSharpGame\obj\Debug\net7.0\CSharpGame.genruntimeconfig.cache
+C:\Users\dongh\CSharpGame\obj\Debug\net7.0\ref\CSharpGame.dll
