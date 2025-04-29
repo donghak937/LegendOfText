@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading; //sleep을 위한 코드
 
 namespace CSharpGame
 {
@@ -143,6 +144,59 @@ namespace CSharpGame
             else return "";
         }
         
+    }
+
+    internal class Gamemanager
+    {
+        int input
+
+        void gmaeStart(){
+            string name;
+            string job;
+            string input;
+            Console.WriteLine("던전 탐험에 오신 것을 환영합니다.");
+            Thread.Sleep(1000); // 1000밀리초 멈추기
+            Console.WriteLine("당신은 직업을 고르고 던전을 탐험할 것입니다.");
+            Thread.Sleep(1000);
+            while (true){
+                Console.Write("당신의 이름은 무엇인가요? > ");
+                name  = Console.ReadLine() ?? "용사";
+                Console.WriteLine("당신의 이름이 {0} (이)가 맞나요?", name);
+                Console.Write("네 : 1 | 아니요 : 2 | > ");
+                input = Console.ReadLine() ?? "2";
+                if (input == "1"){
+                    break;
+                }
+                else {
+                    continue;
+                }
+            }
+
+            while (true){
+                Console.WriteLine("당신의 직업은 무엇인가요?");
+                Console.Write("전사 | 마법사 | > ");
+                job = Console.ReadLine() ?? "전사";
+                 Console.WriteLine("당신의 직업이 {0} (이)가 맞나요?", name);
+                Console.Write("네 : 1 | 아니요 : 2 | > ");
+                input = Console.ReadLine() ?? "2";
+                if (job == "전사"){
+                    break;
+                }
+                else if (job == "마법사"){
+                    break;
+                }
+                else{
+                    Console.WriteLine("유효하지 않은 직업입니다. 다시 골라주세요.");
+                    Thread.Sleep(1000);
+                }
+
+
+            }
+
+
+             
+
+        }
     }
     internal class Program
     {
