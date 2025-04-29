@@ -5,7 +5,7 @@ namespace CSharpGame
 {
     internal class Player
     {
-        public PlayerJob job1 = new PlayerJob("전사");
+        public PlayerJob job1; //직업별 다른 초기 능력치를 가진 세팅
         private string job;
         private int hp;
         private int mana;
@@ -13,6 +13,11 @@ namespace CSharpGame
         private int maxDmg;
         private int gold;
         private string name;
+        private string description;
+        public string Description
+        {
+            get { return description; }
+        }
         public string Name
         {
             get { return name; }
@@ -42,20 +47,23 @@ namespace CSharpGame
             get { return gold; }
             set { gold = value; }
         }
-        public Player(string name, PlayerJob job){
-            this.hp = job.Hp;
-            this.mana = job.Mana;
-            this.minDmg = job.MinDmg;
-            this.maxDmg = job.MaxDmg;
-            this.name = name; 
-            this.gold = job.Gold; 
-            this.job = job.Job; 
+        public Player(PlayerJob job){
+            job1 = job;
+            this.hp = job1.Hp;
+            this.mana = job1.Mana;
+            this.minDmg = job1.MinDmg;
+            this.maxDmg = job1.MaxDmg;
+            this.name = job1.Name; 
+            this.gold = job1.Gold; 
+            this.job = job1.Job; 
+            this.description = job1.Description;
         }
 
         public void printPlayerInfo(){
-            Console.WriteLine("이름 : {0}", name);
+            Console.WriteLine("당신의 정보 >> ");
+            Console.WriteLine("\n이름 : {0}", name);
             Console.WriteLine("직업 : {0}", job);
-            Console.WriteLine("\n{0}", job1.Description);
+            Console.WriteLine("\n{0}", description);
             Console.WriteLine("\n체력 : {0}", hp);
             Console.WriteLine("마나 : {0}", mana);
             Console.WriteLine("공격력 : {0} - {1}", minDmg, maxDmg);
@@ -65,11 +73,26 @@ namespace CSharpGame
 
     internal class PlayerJob
     {
+        private string name;
         private int hp;
         private int mana;
         private int minDmg;
         private int maxDmg;
         private int gold;
+        private string job;
+        private string description;
+        public string Name
+        {
+            get { return name; }
+        }
+        public string Description
+        {
+            get { return description; }
+        }
+        public string Job
+        {
+            get { return job; }
+        }
         public int Hp
         {
             get { return hp; }
@@ -95,26 +118,16 @@ namespace CSharpGame
             get { return gold; }
             set { gold = value; }
         }
-        private string job = "전사";
-        public string Job
+        public PlayerJob(string job, string name)
         {
-            get { return job; }
-        }
-
-        private string description;
-        public string Description
-        {
-            get { return description; }
-        }
-        public PlayerJob(string job)
-        {
+            this.name = name;
             this.job = job;
             this.description = jobMatch(job);
         }
         string jobMatch(string job) // 직업이랑 설명이랑 맞추는 과정
         {
             if (job == "전사"){
-
+                
                 hp = 100;
                 mana = 50;
                 minDmg = 10;
@@ -145,12 +158,9 @@ namespace CSharpGame
         }
         
     }
-
-    internal class Gamemanager
+    internal class GameManager
     {
-        int input
-
-        void gmaeStart(){
+        public static Player gameSetting(){
             string name;
             string job;
             string input;
@@ -173,48 +183,43 @@ namespace CSharpGame
             }
 
             while (true){
-                Console.WriteLine("당신의 직업은 무엇인가요?");
+                Console.WriteLine("\n당신의 직업은 무엇인가요?");
                 Console.Write("전사 | 마법사 | > ");
                 job = Console.ReadLine() ?? "전사";
-                 Console.WriteLine("당신의 직업이 {0} (이)가 맞나요?", name);
+                 Console.WriteLine("당신의 직업이 {0} (이)가 맞나요?", job);
                 Console.Write("네 : 1 | 아니요 : 2 | > ");
                 input = Console.ReadLine() ?? "2";
-                if (job == "전사"){
-                    break;
-                }
-                else if (job == "마법사"){
-                    break;
+                if (input == "1"){
+                    if (job == "전사"){
+                        PlayerJob playerJob = new PlayerJob(job, name);
+                        Player player = new Player(playerJob);
+                        return player;
+
+                    }
+                    else if (job == "마법사"){
+                        PlayerJob playerJob = new PlayerJob(job, name);
+                        Player player = new Player(playerJob);
+                        return player;
+                    }
+                    else{
+                        Console.WriteLine("\n유효하지 않은 직업입니다. 다시 골라주세요.");
+                        Thread.Sleep(1000);
+                    }
                 }
                 else{
-                    Console.WriteLine("유효하지 않은 직업입니다. 다시 골라주세요.");
-                    Thread.Sleep(1000);
+                    continue;
                 }
-
-
             }
-
-
-             
-
         }
     }
     internal class Program
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("직업을 골라주세요");
-            string input  = Console.ReadLine() ?? "전사"; //?? 뜻, null이면, 전사라고 해라라
 
             Player player;
+            player = GameManager.gameSetting();
 
-            if (input == "전사"){
-                PlayerJob warrior = new PlayerJob("전사");
-                player = new Player("dongha", warrior);
-            }
-            else{
-                PlayerJob mage = new PlayerJob("마법사");
-                player = new Player("dongha", mage);
-            }
             
             player.printPlayerInfo();
         }
